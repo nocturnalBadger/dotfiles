@@ -98,6 +98,8 @@ alias 'helium'='open -a HeliumLift.app'
 alias "start_mysql"="/usr/local/mysql/bin/mysqld_safe &"
 alias "txt2html"="rename 's/.txt/.html/' *.txt"
 alias 'ding'='afplay /System/Library/Sounds/Ping.aiff'
+alias 'startwm'='brew services start chunkwm; brew services start khd'
+alias 'stopwm'='brew services stop chunkwm; brew services stop khd'
 
 # PATH mess from bash_profile:
 #PATH=/usr/local/php/bin/php:$PATH
