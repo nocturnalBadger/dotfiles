@@ -15,12 +15,12 @@ find "$PWD" -type f -print0 | while IFS= read -r -d '' gitfile; do
 
         bkpName=$(echo "$target" | sed "s+^$HOME+$backupDir+g")
 
-        mkdir -p $(dirname "$bkpName")
+        mkdir -p "$(dirname "$bkpName")"
 
         mv "$target" "$bkpName"
     fi
 
-    mkdir -p $(dirname "$target")
+    mkdir -p "$(dirname "$target")"
 
     ln -s "$gitfile" "$target"
 done

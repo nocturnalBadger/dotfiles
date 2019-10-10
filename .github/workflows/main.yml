@@ -12,4 +12,4 @@ jobs:
     - name: Install ShellCheck
       run: sudo apt-get install -y shellcheck
     - name: Run check on source code
-      run: shellcheck ./link.sh
+      run: shellcheck --severity warning ./link.sh
