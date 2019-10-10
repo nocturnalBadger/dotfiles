@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Shellcheck Action
-      uses: fearphage/shellcheck-action@0.1.0-debug1
+    - uses: actions/checkout@v1
+    - name: Install ShellCheck
+      run: sudo apt-get install -y shellcheck
+    - name: Run check on source code
+      run: shellcheck ./link.sh
