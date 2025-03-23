@@ -1,5 +1,3 @@
-# User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -132,11 +130,12 @@ snek() {
         source $venvpath/venv/bin/activate
     else
         echo "Creating a new virtual environment in $PWD"
-        python3.10 -m venv --prompt ${PWD##*/} ./venv
+        python3.12 -m venv --prompt ${PWD##*/} ./venv
         source ./venv/bin/activate
         pip install --upgrade pip
 
-        pip install pudb pyflakes black isort python-language-server pyls-isort pyls-black ruff-lsp debugpy
+        pip install pyflakes black isort ruff mypy debugpy
+        pip install python-lsp-server pyls-isort pyls-black pylsp-mypy
         if [[ -f ./requirements.txt ]]; then
             echo "Found requirements.txt. Installing."
             pip install -r ./requirements.txt
@@ -155,8 +154,6 @@ fi
 
 # This lets me use aliases one level deep in watch commands. e.g. watch kgp or watch ll
 alias watch='watch '
-
-export PYTHONBREAKPOINT=pudb.set_trace
 
 alias szsh='source ~/.zshrc'
 
