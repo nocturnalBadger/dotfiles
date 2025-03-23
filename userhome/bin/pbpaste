@@ -1,0 +1,8 @@
+#!/bin/bash
+# the pbpaste script
+if which xclip > /dev/null; then
+  xclip -o
+else
+  powershell.exe Get-Clipboard | sed 's/\r$//' | sed -z '$ s/\n$//'
+fi
+exit 0
