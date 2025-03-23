@@ -1,0 +1,8 @@
+#!/bin/bash
+# the pbcopy script
+if which xclip > /dev/null; then
+  tee <&0 | xclip -selection clipboard
+else
+  tee <&0 | clip.exe
+fi
+exit 0
