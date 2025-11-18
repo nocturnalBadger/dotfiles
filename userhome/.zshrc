@@ -22,8 +22,8 @@ plugins=(
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit
 
-# asdf version manager
-. $HOME/.asdf/asdf.sh
+## asdf version manager
+#. $HOME/.asdf/asdf.sh
 
 if has kubectl; then
     plugins+=(kube-ps1)

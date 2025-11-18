@@ -96,7 +96,6 @@ vim.lsp.set_log_level 'trace'
 if vim.fn.has 'nvim-0.5.1' == 1 then
 require('vim.lsp.log').set_format_func(vim.inspect)
 end
-local nvim_lsp = require 'lspconfig'
 local on_attach = function(_, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
@@ -130,11 +129,11 @@ vim.keymap.set('n', '<F2>', "<cmd>NERDTreeToggle<cr>", opts)
 vim.keymap.set('n', '<F3>', '<Plug>(CommandT)')
 
 
-local lspconfig = require('lspconfig')
+--local lspconfig = require('lspconfig')
 local configs = require 'lspconfig.configs'
 
 -- Golang language server
-lspconfig.gopls.setup{
+vim.lsp.config("gopls", {
     on_attach = on_attach,
     settings = {
         gopls = {
@@ -149,30 +148,28 @@ lspconfig.gopls.setup{
     init_options = {
         usePlaceholders = true,
     }
-}
+})
 
-lspconfig.ruff.setup {
+vim.lsp.config("ruff", {
     on_attach = on_attach,
     init_options = {
         settings = {
             args = {},
         }
     }
-}
+})
 
 -- Python language server
-lspconfig.pylsp.setup{
+vim.lsp.config("pylsp", {
     settings  = {
-        pylsp = { plugins = { pyflakes = {enabled = false}, flake8 = {enabled = false}, pycodestyle = {enabled = false}, pylint = {enabled = true}}}
+        pylsp = { plugins = { pyflakes = {enabled = false}, flake8 = {enabled = false}, pycodestyle = {enabled = false}, pylint = {enabled = true}}},
 
-    }
-}
-lspconfig.pylsp.setup = {
     on_attach = on_attach
-}
+    }
+})
 
 -- Rust analyzer
-lspconfig.rust_analyzer.setup{
+vim.lsp.config("rust_analyzer", {
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
@@ -180,7 +177,7 @@ lspconfig.rust_analyzer.setup{
       }
     }
   }
-}
+})
 
 -- Debugger (DAP) config
 require("dap-python").setup("python")
